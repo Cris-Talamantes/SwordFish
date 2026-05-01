@@ -2,23 +2,20 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    // Client SDK: users read/write only their own profile. Match/chat data is written only via the backend (Admin SDK).
     match /users/{userId} {
-      allow read, create, update: if request.auth != null && request.auth.uid == userId;
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow create, update: if request.auth != null && request.auth.uid == userId;
       allow delete: if false;
     }
 
+    // No direct client access — all match request and message mutations go through the Flask API.
     match /matchRequests/{requestId} {
-      allow read: if request.auth != null
-        && (request.auth.uid == resource.data.fromUid || request.auth.uid == resource.data.toUid);
+      allow read, write: if false;
 
-      allow create: if request.auth != null
-        && request.auth.uid == request.resource.data.fromUid
-        && request.auth.uid != request.resource.data.toUid;
-
-      allow update: if request.auth != null
-        && request.auth.uid == resource.data.toUid;
-
-      allow delete: if false;
+      match /messages/{messageId} {
+        allow read, write: if false;
+      }
     }
   }
 }

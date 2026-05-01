@@ -2,9 +2,15 @@ backend/.venv/
 backend/__pycache__/
 backend/.env
 backend/serviceAccountKey.json
+backend/*firebase-adminsdk*.json
+serviceaccount.json
+*.pem
+
+.vercel/
 
 frontend/.env
 frontend/dist/
 frontend/node_modules/
 
 *.pyc
+.venv/
