@@ -46,7 +46,7 @@ export default function SignupPage() {
       <form className="auth-form motion-surface" onSubmit={handleSubmit}>
         <h1>Create account</h1>
         <p className="auth-lead">
-          SwordFish is for people searching for relatives or responding to a search. Take your time — you stay in control of
+          Misma Luna is for people searching for relatives or responding to a search. Take your time — you stay in control of
           who you connect with.
         </p>
         <label>

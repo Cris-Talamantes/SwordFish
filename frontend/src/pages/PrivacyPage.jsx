@@ -8,9 +8,9 @@ export default function PrivacyPage() {
       <p className="legal-updated">BorderHack / student project stub — review with counsel before any production use.</p>
 
       <section className="legal-section">
-        <h2>What SwordFish is</h2>
+        <h2>What Misma Luna is</h2>
         <p>
-          SwordFish is a consent-based tool meant to help people explore whether they may be connected to someone they are
+          Misma Luna is a consent-based tool meant to help people explore whether they may be connected to someone they are
           searching for. It does <strong>not</strong> verify who anyone is, and it is <strong>not</strong> affiliated with
           governments, immigration authorities, or NGOs unless explicitly stated elsewhere by the organizers of your event.
         </p>
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
 
       <section className="legal-section">
         <h2>Children</h2>
-        <p>SwordFish is intended for users age <strong>18+</strong>. Do not use the service if you are under 18.</p>
+        <p>Misma Luna is intended for users age <strong>18+</strong>. Do not use the service if you are under 18.</p>
       </section>
 
       <section className="legal-section">

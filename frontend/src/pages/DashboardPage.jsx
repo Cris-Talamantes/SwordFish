@@ -65,7 +65,7 @@ export default function DashboardPage() {
       <aside className="safety-callout safety-callout-muted motion-surface" role="note">
         <h2 className="safety-callout-title">A gentle reminder</h2>
         <p>
-          SwordFish cannot promise someone is who they say they are. Share personal information slowly. If anyone pressures
+          Misma Luna cannot promise someone is who they say they are. Share personal information slowly. If anyone pressures
           you for money or documents, pause and seek trusted offline help.
         </p>
       </aside>

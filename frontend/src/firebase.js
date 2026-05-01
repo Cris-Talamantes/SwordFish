@@ -24,7 +24,7 @@ const missing = Object.entries({
 
 if (missing.length > 0 && import.meta.env.DEV) {
   console.warn(
-    "[SwordFish] Missing Firebase env vars:",
+    "[Misma Luna] Missing Firebase env vars:",
     missing.map(([k]) => k).join(", "),
     "— copy frontend/.env.example to frontend/.env and fill values."
   );

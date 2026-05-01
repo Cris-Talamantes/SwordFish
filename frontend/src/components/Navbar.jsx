@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <Link className="brand" to={currentUser ? "/dashboard" : "/"}>
-        SwordFish
+        Misma Luna
       </Link>
 
       <nav className="nav-links" aria-label="Primary navigation">

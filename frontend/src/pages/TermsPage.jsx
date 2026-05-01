@@ -10,14 +10,14 @@ export default function TermsPage() {
       <section className="legal-section">
         <h2>Agreement</h2>
         <p>
-          By creating an account or using SwordFish, you agree to these terms. If you do not agree, do not use the
+          By creating an account or using Misma Luna, you agree to these terms. If you do not agree, do not use the
           service.
         </p>
       </section>
 
       <section className="legal-section">
         <h2>No guarantees</h2>
-        <p>SwordFish is provided &quot;as is&quot; for learning and demonstration. We do not guarantee:</p>
+        <p>Misma Luna is provided &quot;as is&quot; for learning and demonstration. We do not guarantee:</p>
         <ul>
           <li>Accuracy of any profile, message, or claimed relationship.</li>
           <li>That you will find or safely reconnect with anyone.</li>
@@ -29,7 +29,7 @@ export default function TermsPage() {
       <section className="legal-section">
         <h2>Not legal advice; not emergency services</h2>
         <p>
-          SwordFish does not provide legal guidance or immigration advice. If you or someone else faces immediate danger,
+          Misma Luna does not provide legal guidance or immigration advice. If you or someone else faces immediate danger,
           contact local emergency services or trusted crisis resources appropriate to your situation.
         </p>
       </section>
@@ -40,14 +40,14 @@ export default function TermsPage() {
         <ul>
           <li>Avoid sharing exact addresses, precise schedules, or financial details with strangers.</li>
           <li>Be skeptical of urgent requests for money, documents, or passwords.</li>
-          <li>Consider verifying details through independent channels you trust — SwordFish does not replace that care.</li>
+          <li>Consider verifying details through independent channels you trust — Misma Luna does not replace that care.</li>
           <li>Meet only in safe, public places if you choose to meet, and tell someone you trust where you are.</li>
         </ul>
       </section>
 
       <section className="legal-section">
         <h2>Acceptable use</h2>
-        <p>You may not use SwordFish to:</p>
+        <p>You may not use Misma Luna to:</p>
         <ul>
           <li>Harass, threaten, coerce, or harm anyone.</li>
           <li>Impersonate another person or misrepresent your identity or relationship.</li>
@@ -75,7 +75,7 @@ export default function TermsPage() {
 
       <section className="legal-section">
         <h2>Age</h2>
-        <p>You must be at least <strong>18 years old</strong> to use SwordFish.</p>
+        <p>You must be at least <strong>18 years old</strong> to use Misma Luna.</p>
       </section>
 
       <section className="legal-section">
@@ -89,7 +89,7 @@ export default function TermsPage() {
       <section className="legal-section">
         <h2>Limitation of liability</h2>
         <p>
-          To the maximum extent permitted by law, SwordFish and its contributors are not liable for indirect or
+          To the maximum extent permitted by law, Misma Luna and its contributors are not liable for indirect or
           consequential damages arising from use of the service, including interactions between users.
         </p>
       </section>

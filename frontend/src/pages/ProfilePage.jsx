@@ -157,7 +157,7 @@ export default function ProfilePage() {
 
       <section className="danger-zone">
         <h2>Delete account and data</h2>
-        <p>Remove your account, profile, match requests, and chat data from SwordFish.</p>
+        <p>Remove your account, profile, match requests, and chat data from Misma Luna.</p>
         <button className="button danger" onClick={handleDeleteAccount} type="button">
           Delete my account
         </button>

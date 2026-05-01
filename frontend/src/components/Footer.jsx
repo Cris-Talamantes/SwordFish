@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="site-footer-inner">
         <div className="site-footer-brand">
-          <span className="site-footer-title">SwordFish</span>
+          <span className="site-footer-title">Misma Luna</span>
           <p className="site-footer-tagline">Family reconnection with consent — not a dating service.</p>
         </div>
         <nav className="site-footer-nav" aria-label="Footer">
@@ -23,7 +23,7 @@ export default function Footer() {
         </nav>
       </div>
       <p className="site-footer-disclaimer">
-        SwordFish does not verify identity or family relationships, provide legal advice, or offer emergency services.
+        Misma Luna does not verify identity or family relationships, provide legal advice, or offer emergency services.
       </p>
     </footer>
   );

@@ -8,7 +8,7 @@ export default function LandingPage() {
           <p className="eyebrow">Missing-relative finder · Borderland impact</p>
           <h1 className="motion-text">Reconnect with care, consent, and patience.</h1>
           <p>
-            SwordFish supports people who may have been separated by deportation, migration, or displacement — and loved
+            Misma Luna supports people who may have been separated by deportation, migration, or displacement — and loved
             ones searching for them. Nothing moves forward unless <strong>both sides choose to engage</strong>.
           </p>
           <p className="landing-soft">
