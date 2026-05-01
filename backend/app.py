@@ -219,7 +219,7 @@ def create_app():
 
     @app.get("/api/health")
     def health():
-        return jsonify({"status": "ok", "service": "swordfish-api"})
+        return jsonify({"status": "ok", "service": "misma-luna-api"})
 
     @app.get("/api/auth/session")
     @require_firebase_auth
