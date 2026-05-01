@@ -118,7 +118,10 @@ export default function ChatPage() {
       <div className="page-heading">
         <p className="eyebrow">Chat</p>
         <h1>Confirmed matches</h1>
-        <p>Chat unlocks only after both people answer verification questions and confirm the match.</p>
+        <p>
+          Chat unlocks only after both people answer verification questions and confirm the match. This demo is not
+          continuously moderated — report threats or scams to event organizers and prioritize your offline safety.
+        </p>
       </div>
 
       {loading && <div className="status-panel">Loading chats...</div>}
@@ -166,12 +169,20 @@ export default function ChatPage() {
           </form>
           {activeChatId && (
             <section className="chat-safety-panel">
-              <h3>Chat controls</h3>
+              <h3>Safety &amp; controls</h3>
+              <p className="chat-safety-lead">
+                Never wire money, buy gift cards, or send photos of identity documents to prove “trust.” If someone rushes you,
+                slow down.{" "}
+                <a className="inline-link" href="https://discord.com/invite/SPr9g86a4F" rel="noreferrer" target="_blank">
+                  Reach organizers on Discord
+                </a>{" "}
+                if you need help during BorderHack — routine moderation may be limited.
+              </p>
               <div className="action-row">
-                <button className="button secondary" onClick={handleLeave} type="button">
+                <button className="button secondary motion-button" onClick={handleLeave} type="button">
                   Leave chat
                 </button>
-                <button className="button danger" onClick={handleBlock} type="button">
+                <button className="button danger motion-button" onClick={handleBlock} type="button">
                   Block account
                 </button>
               </div>

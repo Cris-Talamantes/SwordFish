@@ -61,8 +61,8 @@ export default function SearchPeoplePage() {
         <p className="eyebrow">People search</p>
         <h1>Find a relative</h1>
         <p>
-          Add what you know about the person. Search uses public profile fields only,
-          so private details stay out of the results.
+          Add what you know about the person. Search uses only broad profile fields — keep addresses, workplace specifics,
+          and immigration case numbers out of messages until you trust the conversation.
         </p>
       </div>
 
@@ -142,7 +142,7 @@ export default function SearchPeoplePage() {
                 value={messageByUid[person.uid] ?? ""}
               />
               <button
-                className="button secondary"
+                className="button secondary motion-button"
                 disabled={requestingUid === person.uid}
                 onClick={() => handleSendRequest(person.uid)}
                 type="button"

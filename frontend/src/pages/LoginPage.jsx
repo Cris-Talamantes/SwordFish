@@ -36,8 +36,9 @@ export default function LoginPage() {
 
   return (
     <section className="auth-page">
-      <form className="auth-form" onSubmit={handleSubmit}>
+      <form className="auth-form motion-surface" onSubmit={handleSubmit}>
         <h1>Log in</h1>
+        <p className="auth-lead">Welcome back. Your profile and requests are private until you choose to engage.</p>
         <label>
           Email
           <input
@@ -59,7 +60,7 @@ export default function LoginPage() {
           />
         </label>
         {error && <p className="form-error">{error}</p>}
-        <button className="button primary" disabled={submitting} type="submit">
+        <button className="button primary motion-button" disabled={submitting} type="submit">
           {submitting ? "Logging in..." : "Log in"}
         </button>
         <p>

@@ -11,12 +11,20 @@ export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [generalLocation, setGeneralLocation] = useState("");
   const [password, setPassword] = useState("");
+  const [agreeAge, setAgreeAge] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(false);
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
     setError("");
+
+    if (!agreeAge || !agreeTerms) {
+      setError("Please confirm you are 18 or older and accept the Terms and Privacy Policy.");
+      return;
+    }
+
     setSubmitting(true);
 
     try {
@@ -35,8 +43,12 @@ export default function SignupPage() {
 
   return (
     <section className="auth-page">
-      <form className="auth-form" onSubmit={handleSubmit}>
+      <form className="auth-form motion-surface" onSubmit={handleSubmit}>
         <h1>Create account</h1>
+        <p className="auth-lead">
+          SwordFish is for people searching for relatives or responding to a search. Take your time — you stay in control of
+          who you connect with.
+        </p>
         <label>
           Full name
           <input
@@ -61,7 +73,7 @@ export default function SignupPage() {
           <input
             autoComplete="address-level2"
             onChange={(event) => setGeneralLocation(event.target.value)}
-            placeholder="City, state, or region"
+            placeholder="City, state, or region — avoid exact addresses"
             type="text"
             value={generalLocation}
           />
@@ -77,8 +89,31 @@ export default function SignupPage() {
             value={password}
           />
         </label>
+
+        <fieldset className="consent-fieldset">
+          <legend className="sr-only">Consent</legend>
+          <label className="consent-row">
+            <input checked={agreeAge} onChange={(event) => setAgreeAge(event.target.checked)} type="checkbox" />
+            <span>I am 18 or older.</span>
+          </label>
+          <label className="consent-row">
+            <input checked={agreeTerms} onChange={(event) => setAgreeTerms(event.target.checked)} type="checkbox" />
+            <span>
+              I agree to the{" "}
+              <Link className="inline-link" to="/terms">
+                Terms
+              </Link>{" "}
+              and{" "}
+              <Link className="inline-link" to="/privacy">
+                Privacy Policy
+              </Link>
+              .
+            </span>
+          </label>
+        </fieldset>
+
         {error && <p className="form-error">{error}</p>}
-        <button className="button primary" disabled={submitting} type="submit">
+        <button className="button primary motion-button" disabled={submitting} type="submit">
           {submitting ? "Creating..." : "Sign up"}
         </button>
         <p>

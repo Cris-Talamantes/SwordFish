@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
+import Footer from "./components/Footer.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ChatPage from "./pages/ChatPage.jsx";
@@ -8,9 +9,11 @@ import LandingPage from "./pages/LandingPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import MatchRequestsPage from "./pages/MatchRequestsPage.jsx";
 import NotificationsPage from "./pages/NotificationsPage.jsx";
+import PrivacyPage from "./pages/PrivacyPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import SearchPeoplePage from "./pages/SearchPeoplePage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
+import TermsPage from "./pages/TermsPage.jsx";
 
 export default function App() {
   return (
@@ -21,6 +24,8 @@ export default function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
 
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<DashboardPage />} />
@@ -34,6 +39,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }

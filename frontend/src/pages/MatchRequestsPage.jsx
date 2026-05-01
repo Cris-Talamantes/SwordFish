@@ -99,7 +99,10 @@ export default function MatchRequestsPage() {
       <div className="page-heading">
         <p className="eyebrow">Match requests</p>
         <h1>Review requests</h1>
-        <p>Accept or reject incoming requests from people who believe they may be connected to you.</p>
+        <p>
+          Accept or reject incoming requests from people who believe they may be connected to you. You can change your mind
+          before verification — once you proceed, take only steps that feel emotionally safe.
+        </p>
       </div>
 
       {loading && <div className="status-panel">Loading match requests...</div>}
