@@ -1,9 +1,5 @@
-backend/.venv/
-backend/__pycache__/
-backend/.env
-backend/serviceAccountKey.json
-backend/*firebase-adminsdk*.json
 functions/venv/
+functions/.tmp/
 functions/__pycache__/
 functions/.env
 functions/serviceAccountKey.json
@@ -14,12 +10,6 @@ functions_deploy/__pycache__/
 functions_deploy/.env
 functions_deploy/serviceAccountKey.json
 functions_deploy/*firebase-adminsdk*.json
-serviceaccount.json
-*.pem
-
-frontend/.env
-frontend/dist/
 frontend/node_modules/
-
-*.pyc
-.venv/
+frontend/dist/
+**/*.pyc

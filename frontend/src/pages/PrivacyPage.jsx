@@ -36,8 +36,8 @@ export default function PrivacyPage() {
             actions you take (for example leave or block flags recorded by the service).
           </li>
           <li>
-            <strong>Technical:</strong> standard server, hosting, and Firebase operational data (for example logs or
-            security telemetry) as configured by Firebase, Vercel, and related infrastructure providers.
+            <strong>Technical:</strong> standard hosting and Firebase operational data (for example logs or security
+            telemetry) as configured by Firebase.
           </li>
           <li>
             <strong>Optional uploads:</strong> if you use profile photo upload features and Storage rules allow it, images
@@ -64,8 +64,8 @@ export default function PrivacyPage() {
         <h2>Sharing</h2>
         <p>
           We do not sell your personal information. Data is processed through service providers you configure (for example
-          Google Firebase and Vercel). Judges, mentors, or demo viewers may see synthetic or real demo data only in the
-          ways you choose to present your project.
+          Firebase). Judges, mentors, or demo viewers may see synthetic or real demo data only in the ways you choose to
+          present your project.
         </p>
       </section>
 

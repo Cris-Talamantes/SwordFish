@@ -50,7 +50,7 @@ export default function SignupPage() {
           who you connect with.
         </p>
         <label>
-          Full name
+          First name
           <input
             autoComplete="name"
             onChange={(event) => setFullName(event.target.value)}

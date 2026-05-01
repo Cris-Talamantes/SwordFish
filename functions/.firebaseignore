@@ -1,0 +1,7 @@
+venv/
+.tmp/
+__pycache__/
+.env
+serviceAccountKey.json
+*firebase-adminsdk*.json
+*.pyc

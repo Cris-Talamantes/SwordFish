@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="site-footer-inner">
         <div className="site-footer-brand">
           <span className="site-footer-title">Misma Luna</span>
-          <p className="site-footer-tagline">Family reconnection with consent — not a dating service.</p>
+          <p className="site-footer-tagline">Helping families find each other again</p>
         </div>
         <nav className="site-footer-nav" aria-label="Footer">
           <Link className="site-footer-link" to="/privacy">
