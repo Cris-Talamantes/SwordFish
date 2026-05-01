@@ -40,8 +40,8 @@ Set either `GOOGLE_APPLICATION_CREDENTIALS` to a Firebase service account JSON f
 
 1. Push this repo to GitHub (or connect your Git provider).
 2. In [Vercel](https://vercel.com), **Import** the repository. Keep the **project root** at the repo root (where `vercel.json` lives).
-3. In Vercel **Project → Settings → General → Framework Preset**, choose **Services** (required for multi-service repos).
-4. `vercel.json` defines [Vercel Services](https://vercel.com/docs/services): **frontend** (Vite, `/`) and **backend** (Flask, `/_/backend`). Vercel injects `NEXT_PUBLIC_BACKEND_URL` for the frontend build; you can set `VITE_API_URL=/_/backend` instead if needed. Python dependencies are read from `backend/requirements.txt` for the Flask service.
+3. Use the default **Other** / **Vite** framework preset, or **Other** with build settings taken from `vercel.json`. Do **not** require the **Services** preset for this repo.
+4. `vercel.json` builds the Vite app from `frontend/`, serves `frontend/dist`, and routes `/api` to the Python serverless entry `api/index.py` (Flask app from `backend/`). Root `requirements.txt` mirrors `backend/requirements.txt` for the serverless runtime. The browser calls same-origin `/api/...` (leave `VITE_API_URL` unset on Vercel).
 
 ### Environment variables (Vercel → Project → Settings → Environment Variables)
 
@@ -64,7 +64,7 @@ Set either `GOOGLE_APPLICATION_CREDENTIALS` to a Firebase service account JSON f
 | `VITE_FIREBASE_MESSAGING_SENDER_ID` | Yes | |
 | `VITE_FIREBASE_APP_ID` | Yes | |
 | `VITE_FIREBASE_MEASUREMENT_ID` | No | Optional Analytics |
-| `VITE_API_URL` | No | Leave unset if `NEXT_PUBLIC_BACKEND_URL` is injected (Services). Otherwise set to `/_/backend` so API calls hit the Flask service. |
+| `VITE_API_URL` | No | Leave **unset** on Vercel so the browser uses same-origin `/api` (rewritten to the Flask function). Set only if the API is hosted on another origin. |
 
 After the first deploy, add your real production URL to `CORS_ORIGINS` and redeploy.
 

@@ -3,11 +3,11 @@ import axios from "axios";
 import { auth } from "../firebase.js";
 
 /**
- * Local: leave unset and use Vite proxy `/api` → backend, or set VITE_API_URL=http://localhost:5000
- * Vercel Services: Vercel sets NEXT_PUBLIC_BACKEND_URL (e.g. /_/backend); override with VITE_API_URL if needed.
+ * Leave unset for same-origin `/api` (Vite dev proxies to Flask; Vercel rewrites `/api` to the Python function).
+ * Set VITE_API_URL only if the API is on another origin (e.g. separate backend host).
  */
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ?? import.meta.env.NEXT_PUBLIC_BACKEND_URL ?? "",
+  baseURL: import.meta.env.VITE_API_URL ?? "",
 });
 
 api.interceptors.request.use(async (config) => {

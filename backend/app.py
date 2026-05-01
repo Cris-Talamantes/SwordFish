@@ -12,29 +12,6 @@ from flask_cors import CORS
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
-# Vercel Services mounts this Flask app under routePrefix (see root vercel.json).
-SERVICE_ROUTE_PREFIX = os.getenv("VERCEL_SERVICE_ROUTE_PREFIX", "/_/backend").rstrip("/")
-
-
-def _strip_service_route_prefix(app):
-    """When deployed behind a route prefix, PATH_INFO includes it; strip for existing /api/* routes."""
-    if not SERVICE_ROUTE_PREFIX:
-        return app
-
-    underlying = app.wsgi_app
-
-    def wsgi_app(environ, start_response):
-        path = environ.get("PATH_INFO") or ""
-        prefix = SERVICE_ROUTE_PREFIX
-        if path == prefix or path.startswith(prefix + "/"):
-            new_environ = dict(environ)
-            new_environ["PATH_INFO"] = "/" if path == prefix else path[len(prefix) :] or "/"
-            return underlying(new_environ, start_response)
-        return underlying(environ, start_response)
-
-    app.wsgi_app = wsgi_app
-    return app
-
 
 def initialize_firebase():
     if firebase_admin._apps:
@@ -641,7 +618,7 @@ def create_app():
             }
         )
 
-    return _strip_service_route_prefix(app)
+    return app
 
 
 app = create_app()
