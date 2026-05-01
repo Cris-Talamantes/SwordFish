@@ -37,14 +37,15 @@ Set either `GOOGLE_APPLICATION_CREDENTIALS` to a Firebase service account JSON f
 ## Current foundation
 
 - Public pages: landing, login, signup
-- Protected placeholders: dashboard, profile, create report, search reports, match requests, notifications, chat
+- Protected pages: dashboard, profile, people search, match requests, notifications, chat
 - React protected routing
 - Firebase Auth client setup
-- Firestore user profiles under `users/{uid}`
-- Firebase Storage profile photo uploads under `users/{uid}/profilePhotos`
+- Firestore user profiles under `users/{uid}` with public discovery fields and private verification fields
 - Axios client that sends Firebase ID tokens to Flask
 - Flask protected API routes that verify Firebase ID tokens
+- Backend profile search that returns public profile fields only
+- Match request create/list/accept/reject foundation
 
 ## Firebase rules
 
-Starter rules are included in `firestore.rules` and `storage.rules`. Apply them in Firebase Console or with the Firebase CLI before testing profile creation and photo uploads.
+Starter rules are included in `firestore.rules` and `storage.rules`. Apply them in Firebase Console or with the Firebase CLI before testing profile creation.

@@ -21,11 +21,8 @@ export default function DashboardPage() {
       description="Your future family search workspace will live here."
     >
       <div className="profile-summary">
-        <h2>{profile?.fullName || "Welcome"}</h2>
+        <h2>{profile?.firstName || profile?.fullName || "Welcome"}</h2>
         <p>{profileLoading ? "Loading profile..." : profile?.email}</p>
-        {profile?.profilePhotos?.[0] && (
-          <img className="avatar-preview" src={profile.profilePhotos[0]} alt={profile.fullName || "Profile"} />
-        )}
       </div>
       <div className="status-panel">
         {session ? (

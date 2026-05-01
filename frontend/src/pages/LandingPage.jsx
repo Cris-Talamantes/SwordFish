@@ -7,7 +7,7 @@ export default function LandingPage() {
         <p className="eyebrow">Missing-relative finder</p>
         <h1>Reconnect families with care, consent, and clarity.</h1>
         <p>
-          SwordFish helps people organize trusted reports and begin the process of
+          SwordFish helps people create trusted profiles and begin the process of
           finding missing family members, lost relatives, or disconnected relatives.
         </p>
         <div className="action-row">

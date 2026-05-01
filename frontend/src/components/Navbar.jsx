@@ -15,8 +15,7 @@ export default function Navbar() {
         {currentUser ? (
           <>
             <NavLink to="/dashboard">Dashboard</NavLink>
-            <NavLink to="/reports/new">Create Report</NavLink>
-            <NavLink to="/reports/search">Search</NavLink>
+            <NavLink to="/search">Search</NavLink>
             <NavLink to="/match-requests">Matches</NavLink>
             <NavLink to="/notifications">Notifications</NavLink>
             <NavLink to="/chat">Chat</NavLink>

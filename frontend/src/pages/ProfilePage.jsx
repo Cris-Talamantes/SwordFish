@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
 
+import { deleteAccountAndData } from "../api/client.js";
 import { useAuth } from "../context/AuthContext.jsx";
-import { updateUserProfile, uploadProfilePhotos } from "../services/profileService.js";
+import { updateUserProfile } from "../services/profileService.js";
 
 export default function ProfilePage() {
-  const { currentUser, profile, profileLoading } = useAuth();
-  const [fullName, setFullName] = useState("");
+  const { currentUser, logout, profile, profileLoading } = useAuth();
+  const [firstName, setFirstName] = useState("");
+  const [age, setAge] = useState("");
   const [generalLocation, setGeneralLocation] = useState("");
+  const [relationshipRole, setRelationshipRole] = useState("");
+  const [storyContext, setStoryContext] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
-  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     if (profile) {
-      setFullName(profile.fullName ?? "");
+      setFirstName(profile.firstName ?? profile.fullName?.split(" ")[0] ?? "");
+      setAge(profile.age ?? "");
       setGeneralLocation(profile.generalLocation ?? "");
+      setRelationshipRole(profile.relationshipRole ?? "");
+      setStoryContext(profile.storyContext ?? profile.bio ?? "");
     }
   }, [profile]);
 
@@ -27,8 +33,11 @@ export default function ProfilePage() {
 
     try {
       await updateUserProfile(currentUser.uid, {
-        fullName: fullName.trim(),
+        firstName: firstName.trim(),
+        age: age === "" ? "" : Number(age),
         generalLocation: generalLocation.trim(),
+        relationshipRole,
+        storyContext: storyContext.trim(),
       });
       setMessage("Profile updated.");
     } catch (err) {
@@ -38,25 +47,28 @@ export default function ProfilePage() {
     }
   }
 
-  async function handlePhotoUpload(event) {
-    const files = Array.from(event.target.files ?? []);
+  async function handleDeleteAccount() {
+    const confirmed = window.confirm(
+      "Delete your account and profile data? This cannot be undone."
+    );
 
-    if (files.length === 0) {
+    if (!confirmed) {
       return;
     }
 
     setMessage("");
     setError("");
-    setUploading(true);
 
     try {
-      await uploadProfilePhotos(currentUser.uid, files);
-      setMessage("Profile photos uploaded.");
-      event.target.value = "";
+      await deleteAccountAndData();
+      try {
+        await logout();
+      } catch {
+        // The backend may have already removed the Firebase Auth user.
+      }
+      window.location.assign("/");
     } catch (err) {
-      setError(err.message);
-    } finally {
-      setUploading(false);
+      setError(err.response?.data?.error ?? err.message);
     }
   }
 
@@ -69,22 +81,52 @@ export default function ProfilePage() {
       <div className="page-heading">
         <p className="eyebrow">User profile</p>
         <h1>Profile</h1>
-        <p>Manage the identity details and photos attached to your family search account.</p>
+        <p>Manage the details people can use to recognize you in search.</p>
       </div>
 
       <form className="profile-form" onSubmit={handleProfileSubmit}>
+        <div className="form-section-heading">
+          <h2>Public matchable info</h2>
+          <p>These soft details help people recognize you without exposing too much.</p>
+        </div>
         <label>
-          Full name
+          First name or nickname
           <input
-            onChange={(event) => setFullName(event.target.value)}
-            required
+            onChange={(event) => setFirstName(event.target.value)}
+            placeholder="First name only"
             type="text"
-            value={fullName}
+            value={firstName}
           />
         </label>
         <label>
           Email
           <input disabled type="email" value={profile?.email ?? currentUser.email ?? ""} />
+        </label>
+        <label>
+          Approximate age
+          <input
+            min="0"
+            onChange={(event) => setAge(event.target.value)}
+            type="number"
+            value={age}
+          />
+        </label>
+        <label>
+          Who are you in the family?
+          <select onChange={(event) => setRelationshipRole(event.target.value)} value={relationshipRole}>
+            <option value="">Choose one</option>
+            <option value="sister">Sister</option>
+            <option value="brother">Brother</option>
+            <option value="mother">Mother</option>
+            <option value="father">Father</option>
+            <option value="daughter">Daughter</option>
+            <option value="son">Son</option>
+            <option value="aunt">Aunt</option>
+            <option value="uncle">Uncle</option>
+            <option value="cousin">Cousin</option>
+            <option value="grandparent">Grandparent</option>
+            <option value="other">Other relative</option>
+          </select>
         </label>
         <label>
           General location
@@ -95,26 +137,30 @@ export default function ProfilePage() {
             value={generalLocation}
           />
         </label>
+        <label>
+          General story or context
+          <textarea
+            onChange={(event) => setStoryContext(event.target.value)}
+            placeholder="Separated in 2005 in El Paso, worked at X place together, etc."
+            rows="4"
+            value={storyContext}
+          />
+        </label>
+
         <button className="button primary" disabled={saving} type="submit">
           {saving ? "Saving..." : "Save profile"}
         </button>
       </form>
 
-      <section className="photo-section">
-        <h2>Profile photos</h2>
-        <label className="file-control">
-          Upload photos
-          <input accept="image/*" multiple onChange={handlePhotoUpload} type="file" />
-        </label>
-        {uploading && <p>Uploading photos...</p>}
-        {message && <p className="form-success">{message}</p>}
-        {error && <p className="form-error">{error}</p>}
+      {message && <p className="form-success">{message}</p>}
+      {error && <p className="form-error">{error}</p>}
 
-        <div className="photo-grid">
-          {(profile?.profilePhotos ?? []).map((photoUrl) => (
-            <img key={photoUrl} src={photoUrl} alt="Profile upload" />
-          ))}
-        </div>
+      <section className="danger-zone">
+        <h2>Delete account and data</h2>
+        <p>Remove your account, profile, match requests, and chat data from SwordFish.</p>
+        <button className="button danger" onClick={handleDeleteAccount} type="button">
+          Delete my account
+        </button>
       </section>
     </section>
   );

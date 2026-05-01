@@ -3,14 +3,13 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ChatPage from "./pages/ChatPage.jsx";
-import CreateReportPage from "./pages/CreateReportPage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import MatchRequestsPage from "./pages/MatchRequestsPage.jsx";
 import NotificationsPage from "./pages/NotificationsPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
-import SearchReportsPage from "./pages/SearchReportsPage.jsx";
+import SearchPeoplePage from "./pages/SearchPeoplePage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 
 export default function App() {
@@ -26,8 +25,7 @@ export default function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/reports/new" element={<CreateReportPage />} />
-            <Route path="/reports/search" element={<SearchReportsPage />} />
+            <Route path="/search" element={<SearchPeoplePage />} />
             <Route path="/match-requests" element={<MatchRequestsPage />} />
             <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/chat" element={<ChatPage />} />

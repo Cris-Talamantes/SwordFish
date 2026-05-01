@@ -42,7 +42,6 @@ export default function SignupPage() {
           <input
             autoComplete="name"
             onChange={(event) => setFullName(event.target.value)}
-            required
             type="text"
             value={fullName}
           />
